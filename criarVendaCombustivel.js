@@ -4,12 +4,12 @@ document.getElementById('formEmprestimoLivro').addEventListener('submit', async 
     const titulo = document.getElementById('titulo').value;
     const preco = document.getElementById('preco').value;
     const isbn = document.getElementById('isbn').value;
-    const data_abastecimento = document.getElementById('data_abastecimento').value;
+    const data_emprestimo = document.getElementById('data_emprestimo').value;
 
     const response = await fetch('http://localhost:3000/vendaCombustivel', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titulo, preco, isbn, data_abastecimento })
+        body: JSON.stringify({ titulo, preco, isbn, data_emprestimo })
     });
 
     const data = await response.json();

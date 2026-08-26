@@ -10,11 +10,11 @@ app.use(express.static('.'));
 
 // Criar vendas de combustível
 app.post('/vendaCombustivel', (req, res) => {
-    const { titulo, preco, isbn, data_abastecimento } = req.body;
+    const { titulo, preco, isbn, data_emprestimo } = req.body;
 
-    const codigoDoMySQL = 'INSERT INTO livros (titulo, preco, isbn, data_abastecimento) VALUES (?, ?, ?, ?)';
+    const codigoDoMySQL = 'INSERT INTO livros (titulo, preco, isbn, data_emprestimo) VALUES (?, ?, ?, ?)';
 
-    acessaBancoNoServidor.query(codigoDoMySQL, [titulo, preco, isbn, data_abastecimento], (err, results) => {
+    acessaBancoNoServidor.query(codigoDoMySQL, [titulo, preco, isbn, data_emprestimo], (err, results) => {
         if (err) {
             return res.json({ error: 'Erro ao cadastrar' });
         }
