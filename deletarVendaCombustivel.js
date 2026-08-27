@@ -1,5 +1,5 @@
 async function carregarVendas() {
-    const response = await fetch('http://localhost:3000/vendaCombustivel');
+    const response = await fetch('http://localhost:3000/emprestimoLivro');
     const vendas = await response.json();
 
     let html = '<table><tr><th>ID</th><th>Tipo de Combustível</th><th>Preço</th><th>Volume Abastecido</th><th>Data Abastecimento</th><th>Ação</th></tr>';

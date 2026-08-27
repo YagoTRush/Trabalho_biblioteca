@@ -35,20 +35,20 @@ app.get('/emprestimoLivro', (req, res) => {
 });
 
 // Deletar emprestimo dos livros
-app.delete('/vendaCombustivel/:id', (req, res) => {
+app.delete('/emprestimoLivro/:id', (req, res) => {
     const id = req.params.id;
     const codigoDoMySQL = 'DELETE FROM livros WHERE id = ?';
 
     acessaBancoNoServidor.query(codigoDoMySQL, [id], (err, result) => {
         if (err) {
-            return res.status(500).json({ error: 'Erro ao deletar venda' });
+            return res.status(500).json({ error: 'Erro ao deletar Emprestimo' });
         }
 
         if (result.affectedRows === 0) {
-            return res.status(404).json({ error: 'Venda não encontrada' });
+            return res.status(404).json({ error: 'Emprestimo não encontrado' });
         }
 
-        res.json({ message: 'Venda excluída com sucesso!' });
+        res.json({ message: 'Emprestimo excluído com sucesso!' });
     });
 });
 
