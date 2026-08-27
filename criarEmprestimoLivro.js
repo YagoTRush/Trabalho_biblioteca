@@ -6,7 +6,7 @@ document.getElementById('formEmprestimoLivro').addEventListener('submit', async 
     const isbn = document.getElementById('isbn').value;
     const data_emprestimo = document.getElementById('data_emprestimo').value;
 
-    const response = await fetch('http://localhost:3000/vendaCombustivel', {
+    const response = await fetch('http://localhost:3000/emprestimoLivro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ titulo, preco, isbn, data_emprestimo })

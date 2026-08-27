@@ -8,8 +8,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.'));
 
-// Criar vendas de combustível
-app.post('/vendaCombustivel', (req, res) => {
+// Criar emprestimos dos livros
+app.post('/emprestimoLivro', (req, res) => {
     const { titulo, preco, isbn, data_emprestimo } = req.body;
 
     const codigoDoMySQL = 'INSERT INTO livros (titulo, preco, isbn, data_emprestimo) VALUES (?, ?, ?, ?)';
@@ -22,8 +22,8 @@ app.post('/vendaCombustivel', (req, res) => {
     });
 });
 
-// Listar vendas de combustível
-app.get('/vendaCombustivel', (req, res) => {
+// Listar emprestimos dos livros
+app.get('/emprestimoLivro', (req, res) => {
     const codigoDoMySQL = 'SELECT * FROM livros';
 
     acessaBancoNoServidor.query(codigoDoMySQL, (err, results) => {
@@ -34,7 +34,7 @@ app.get('/vendaCombustivel', (req, res) => {
     });
 });
 
-// Deletar venda de combustível
+// Deletar emprestimo dos livros
 app.delete('/vendaCombustivel/:id', (req, res) => {
     const id = req.params.id;
     const codigoDoMySQL = 'DELETE FROM livros WHERE id = ?';
@@ -52,7 +52,7 @@ app.delete('/vendaCombustivel/:id', (req, res) => {
     });
 });
 
-// Atualizar venda de combustível
+// Atualizar emprestimo dos livros
 app.put('/vendaCombustivel/:id', (req, res) => {
     const id = req.params.id;
     const { titulo, preco, isbn, data_abastecimento } = req.body;
