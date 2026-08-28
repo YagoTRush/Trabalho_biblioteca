@@ -53,22 +53,22 @@ app.delete('/emprestimoLivro/:id', (req, res) => {
 });
 
 // Atualizar emprestimo dos livros
-app.put('/vendaCombustivel/:id', (req, res) => {
+app.put('/emprestimoLivro/:id', (req, res) => {
     const id = req.params.id;
-    const { titulo, preco, isbn, data_abastecimento } = req.body;
+    const { titulo, preco, isbn, data_emprestimo } = req.body;
 
-    const codigoDoMySQL = 'UPDATE livros SET titulo = ?, preco = ?, isbn = ?, data_abastecimento = ? WHERE id = ?';
+    const codigoDoMySQL = 'UPDATE livros SET titulo = ?, preco = ?, isbn = ?, data_emprestimo = ? WHERE id = ?';
 
-    acessaBancoNoServidor.query(codigoDoMySQL, [titulo, preco, isbn, data_abastecimento, id], (err, result) => {
+    acessaBancoNoServidor.query(codigoDoMySQL, [titulo, preco, isbn, data_emprestimo, id], (err, result) => {
         if (err) {
-            return res.status(500).json({ error: 'Erro ao atualizar venda' });
+            return res.status(500).json({ error: 'Erro ao atualizar emprestimo' });
         }
 
         if (result.affectedRows === 0) {
-            return res.status(404).json({ error: 'Venda não encontrada' });
+            return res.status(404).json({ error: 'Emprestimo não encontrado' });
         }
 
-        res.json({ message: 'Venda atualizada com sucesso!' });
+        res.json({ message: 'Emprestimo atualizado com sucesso!' });
     });
 });
 
